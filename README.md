@@ -1,4 +1,7 @@
 # Tensorflow-CUDA-QA-Extension 
+- project size `96.5MB`
+- only `public\Models\` `96.4MB`
+- with `node_modules` `1.5GB`
 
 This project is part of the tasks required in the AI Dojo - AI 4 Web Developers bootcamp.
 
@@ -55,7 +58,7 @@ The project files and directories are structured as follows:
 
 - `index.js`: The main Node.js backend file containing the server and question-answering functionality.
 - `qnaExtension/`: The Chrome extension folder containing the necessary files to load and use the extension.
-- `public/`: The public directory for serving static files(Model 26 files).
+- `public/`: `96.5MB` The public directory for serving static files(Model 26 files).
 
 ## Dependencies
 
@@ -81,7 +84,7 @@ The project uses the following libraries and dependencies:
   
 ##Notes
 
-- The TensorFlow models are loaded offline and included in the project. They do not require additional downloads.
+- The TensorFlow models are loaded offline in `public` folder and included in the project. They do not require additional downloads.
 - The project initially used the `@tensorflow/tfjs-node` library for CPU usage. However, to improve performance, it was switched to the `@tensorflow/tfjs-node-gpu` library, which utilizes the Nvidia GPU with CUDA support.
 - To switch back to CPU usage, comment out the line:
  ```
@@ -104,3 +107,4 @@ Therefore, it is evident that using the `@tensorflow/tfjs-node-gpu` library, whi
 ##Contribution
 
 - The project is open for collaboration and modifications under the MIT license. Please provide proper attribution when using the source code.
+
