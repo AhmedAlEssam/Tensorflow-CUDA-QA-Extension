@@ -7,48 +7,58 @@ This project is part of the tasks required in the AI Dojo - AI 4 Web Developers 
 
 ## Project Description
 
-The project consists of a Chrome extension with a backend implemented using Node.js and Express. It utilizes TensorFlow Q&A (qna) and CUDA to provide question-answering functionality based on the content of the open webpage.
+The project consists of a Chrome extension with a backend implemented using Node.js and Express. It utilizes TensorFlow Q&A (qna) and CUDA to provide question-answering functionality based on the content of the opened webpage (only specific pages for now).
 
 ## Installation
 
 To install and run the project, follow these steps:
 
 1. Clone the repository:
-```
+   
+```CMD
 git clone https://github.com/AhmedAlEssam/Tensorflow-CUDA-QA-Extension.git 
 ```
 
 2. Install the dependencies:
-```
+   
+```CMD
 cd Tensorflow-CUDA-QA-Extension
 npm install
 ```
+
 3. Set up the necessary libraries:
 - Install CUDA Toolkit and ensure proper GPU drivers are installed.
 - Install cuDNN library.
 
-4. Configure the TensorFlow environment:
+5. set CUDA to use Dedicated GPU
+
+```
+set CUDA_VISIBLE_DEVICES=0
+```
+
+6. Configure the TensorFlow environment:
+   
 - Open the `index.js` file and uncomment either of the following lines based on your preferred TensorFlow version:
+  
   ```javascript
   var tf = require('@tensorflow/tfjs-node-gpu'); // To use GPU
   // var tf = require('@tensorflow/tfjs-node'); // To use CPU
   ```
 
-5. Start the server:
-   ```
-   npm start
-   ```
+7. Start the server:`npm start`
    
-6. Load the Chrome extension:
+8. Load the Chrome extension:
+   
 - Open Google Chrome and go to `chrome://extensions`.
 - Enable Developer mode.
 - Click on "Load unpacked" and select the `qnaExtension` folder from the project directory.
 
-7. Use the Chrome extension:
-- now only for testing the extention work only with two domaines 
+9. Use the Chrome extension:
+
+- now for testing the extension work only with two domains
     - https://developer.chrome.com/
     - https://en.wikipedia.org/
-- Open anyone of previos webpages and its sub-pages and click on the extension icon.
+- Open any of previous web pages and its sub-pages and click on the extension icon.
 - Enter your question related to the webpage content.
 - The extension will provide an answer based on the content of the page.
 
@@ -75,24 +85,25 @@ The project uses the following libraries and dependencies:
 }
 ```
 
-##Usage
+## Usage
 
 - Make sure the server is running by executing the command ``npm start``.
 - Load the Chrome extension and open a webpage.
 - Click on the extension icon and enter your question.
 - The extension will provide an answer based on the content of the page.
   
-##Notes
+## Notes
 
 - The TensorFlow models are loaded offline in `public` folder and included in the project. They do not require additional downloads.
 - The project initially used the `@tensorflow/tfjs-node` library for CPU usage. However, to improve performance, it was switched to the `@tensorflow/tfjs-node-gpu` library, which utilizes the Nvidia GPU with CUDA support.
 - To switch back to CPU usage, comment out the line:
- ```
+
+```javascript
 var tf = require('@tensorflow/tfjs-node-gpu');
 ```
 and uncomment the line:
 
-```
+```javascript
 // var tf = require('@tensorflow/tfjs-node')
 ```
 
@@ -104,7 +115,7 @@ On the other hand, when using the `@tensorflow/tfjs-node-gpu` library, we found 
 Therefore, it is evident that using the `@tensorflow/tfjs-node-gpu` library, which leverages the graphics processing unit (GPU), significantly improves performance. The model can be loaded and questions can be answered much faster compared to using the central processing unit.
 
 
-##Contribution
+## Contribution
 
 - The project is open for collaboration and modifications under the MIT license. Please provide proper attribution when using the source code.
 
